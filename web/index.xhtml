@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Customer Records</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputLabel value="Customer Records"></h:outputLabel>
+            <h:dataTable binding="#{table}" value="#{customer.customerList()}" var="c">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{c.id}"></h:outputText>
+                </h:column>
+                <br/>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{c.name}"></h:outputText>
+                </h:column>
+                <br/>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    <h:outputText value="#{c.email}"></h:outputText>
+                </h:column>
+                <br/>
+                <h:column>
+                    <f:facet name="header">Edit</f:facet>
+                    <h:commandButton action="#{customer.edit(c.id)}" value="Update"></h:commandButton>
+                </h:column>
+                <br/>
+                <h:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandButton action="#{customer.delete(c.id)}" value="Delete"></h:commandButton>
+                </h:column>
+                <br/>
+            </h:dataTable>
+            <h:commandButton action="create.xhtml?faces-redirect=true" value="Add New Customer"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
